@@ -107,7 +107,7 @@ class FormContainer extends Component {
   handleFormSubmit(e) {
     e.preventDefault();
     let userData = this.state.newUser;
-
+    var that = this;
     fetch("https://i4z7pmuktk.execute-api.us-east-1.amazonaws.com/Prod", {
       method: "POST",
       body: JSON.stringify(userData),
@@ -118,17 +118,7 @@ class FormContainer extends Component {
       }
     }).then(response => {
       response.json().then(data => {
-        this.setState(
-          prevState => ({
-            newUser: {
-              ...prevState.newUser,
-              ["output"]: data
-            }
-          }),
-          () => console.log(this.state.newUser)
-        );
-
-        console.log("Successful" + data);
+        console.log("Successful" + data.cid);
       });
     });
   }
