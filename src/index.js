@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import FormContainer from "./containers/FormContainer";
+import './index.css'
 
 const styles = {
   fontFamily: "sans-serif",
@@ -10,8 +11,8 @@ const styles = {
 class App extends Component {
   render() {
     return (
-      <div className="col-md-6">
-        <h3> Chat JS Config Website </h3>
+      <div className="col-lg-6">
+        <h6> Chat JS Config Website </h6>
         <FormContainer />
       </div>
     );

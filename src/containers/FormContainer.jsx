@@ -13,11 +13,10 @@ class FormContainer extends Component {
 
     this.state = {
       newUser: {
-        name: "",
-        age: "",
-        gender: "",
-        skills: [],
-        about: ""
+        instanceArn: "",
+        contactFlowArn: "",
+        role: "",
+        domain: ""
       },
 
       genderOptions: ["Male", "Female", "Others"],
@@ -109,7 +108,7 @@ class FormContainer extends Component {
     e.preventDefault();
     let userData = this.state.newUser;
 
-    fetch("http://example.com", {
+    fetch("https://i4z7pmuktk.execute-api.us-east-1.amazonaws.com/Prod", {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
@@ -142,36 +141,36 @@ class FormContainer extends Component {
         <Input
           inputType={"text"}
           title={"Connect Instance ARN"}
-          name={"name"}
-          value={this.state.newUser.name}
+          name={"instanceArn"}
+          value={this.state.newUser.instanceArn}
           placeholder={"Enter your Instance ARN"}
           handleChange={this.handleInput}
         />{" "}
         {/* Name of the user */}
         <Input
           inputType={"text"}
-          name={"age"}
-          title={"Contact Contact Flow ARN"}
-          value={this.state.newUser.age}
+          name={"contactFlowArn"}
+          title={"Contact Center Flow ARN"}
+          value={this.state.newUser.contactFlowArn}
           placeholder={"Enter your Contact Center Flow ID"}
-          handleChange={this.handleAge}
+          handleChange={this.handleInput}
         />{" "}
         {/* About you */}
         <Input
           inputType={"text"}
-          name={"age"}
+          name={"role"}
           title={"IAM Role"}
-          value={this.state.newUser.age}
+          value={this.state.newUser.role}
           placeholder={"IAM User Role"}
-          handleChange={this.handleAge}
+          handleChange={this.handleInput}
         />
         <Input
           inputType={"text"}
-          name={"age"}
+          name={"domain"}
           title={"Domain that needs to be whitelisted"}
-          value={this.state.newUser.age}
+          value={this.state.newUser.domain}
           placeholder={"Please enter a domain that needs to be whitelisted"}
-          handleChange={this.handleAge}
+          handleChange={this.handleInput}
         />
         <Button
           action={this.handleFormSubmit}
