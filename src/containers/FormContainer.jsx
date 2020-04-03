@@ -16,7 +16,8 @@ class FormContainer extends Component {
         instanceArn: "",
         contactFlowArn: "",
         role: "",
-        domain: ""
+        domain: "", 
+        output: ""
       },
 
       genderOptions: ["Male", "Female", "Others"],
@@ -74,7 +75,6 @@ class FormContainer extends Component {
   }
 
   handleTextArea(e) {
-    console.log("Inside handleTextArea");
     let value = e.target.value;
     this.setState(
       prevState => ({
@@ -118,6 +118,16 @@ class FormContainer extends Component {
       }
     }).then(response => {
       response.json().then(data => {
+        this.setState(
+          prevState => ({
+            newUser: {
+              ...prevState.newUser,
+              ["output"]: data
+            }
+          }),
+          () => console.log(this.state.newUser)
+        );
+
         console.log("Successful" + data);
       });
     });
@@ -187,6 +197,9 @@ class FormContainer extends Component {
           style={buttonStyle}
         />{" "}
         {/* Clear the form */}
+        <div>
+          {this.state.newUser.output}
+        </div>
       </form>
     );
   }
