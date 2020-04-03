@@ -113,7 +113,8 @@ class FormContainer extends Component {
       body: JSON.stringify(userData),
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Origin: "https://polar-spire-46190.herokuapp.com/"
       }
     }).then(response => {
       response.json().then(data => {
